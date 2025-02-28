@@ -20,6 +20,7 @@
     fzf
     lazygit
     vesktop
+    obs-studio
   ];
   imports = [
     ./modules/git.nix
