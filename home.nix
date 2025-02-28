@@ -18,7 +18,7 @@
     python314
     rustup
     fzf
-    
+    lazygit
     vesktop
   ];
   imports = [
