@@ -30,12 +30,12 @@
     carapace.enable = true;
     carapace.enableNushellIntegration = true;
     gh = {
+      enable = true;
+      gitCredentialHelper = {
         enable = true;
-        gitCredentialHelper = {
-            enable = true;
-            hosts = ["https://github.com"];
-          };
+        hosts = ["https://github.com"];
       };
+    };
     starship.enable = true;
     atuin.enable = true;
     bat.enable = true;
