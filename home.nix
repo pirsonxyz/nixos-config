@@ -21,6 +21,7 @@
     lazygit
     vesktop
     obs-studio
+    go
   ];
   imports = [
     ./modules/git.nix
