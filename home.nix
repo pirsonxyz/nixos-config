@@ -22,6 +22,7 @@
     vesktop
     obs-studio
     go
+    heroic
   ];
   imports = [
     ./modules/git.nix

@@ -16,6 +16,7 @@
       cat = "bat --theme gruvbox-dark";
       nano = "hx";
       c = "clear";
+      nix-shell = "nix-shell --run nu";
       home = "nvim ~/.config/nixos";
       rebuild = "home-manager switch --flake /etc/nixos/.";
       rebuild-nix = "sudo nixos-rebuild switch --flake /etc/nixos/.";

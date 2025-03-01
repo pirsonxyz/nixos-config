@@ -129,7 +129,9 @@
   # };
 
   # List services that you want to enable:
-
+  fonts.packages = [
+    pkgs.jetbrains-mono
+  ];
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
