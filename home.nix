@@ -8,6 +8,7 @@
     homeDirectory = "/home/pirson";
     stateVersion = "24.11";
   };
+  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     neofetch
     btop
@@ -23,6 +24,7 @@
     obs-studio
     go
     heroic
+    windsurf
   ];
   imports = [
     ./modules/git.nix
@@ -42,6 +44,17 @@
     starship.enable = true;
     atuin.enable = true;
     bat.enable = true;
-    zoxide.enableNushellIntegration = true;
+    zoxide.enableNushellIntegration = true; 
   };
+
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+        user = {
+            email = "pirson@pirson.xyz";
+            name = "pirsonxyz";
+          };
+      };
+  };
+
 }
