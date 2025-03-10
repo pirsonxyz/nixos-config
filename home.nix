@@ -25,6 +25,10 @@
     go
     heroic
     windsurf
+    code-cursor
+    yazi
+    mpv
+    ffmpeg
   ];
   imports = [
     ./modules/git.nix

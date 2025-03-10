@@ -7,10 +7,12 @@
     extraConfig = ''
       $env.config.buffer_editor = "nvim"
       $env.config.show_banner = false
+      $env.EDITOR = "nvim"
       source ~/.zoxide.nu
       source ~/.atuin.nu
     '';
     shellAliases = {
+      v="nvim";
       vi = "nvim";
       vim = "nvim";
       cat = "bat --theme gruvbox-dark";
