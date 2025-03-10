@@ -29,6 +29,7 @@
     yazi
     mpv
     ffmpeg
+    obsidian
   ];
   imports = [
     ./modules/git.nix
