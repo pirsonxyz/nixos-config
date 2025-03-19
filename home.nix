@@ -30,6 +30,8 @@
     mpv
     ffmpeg
     obsidian
+    libreoffice
+    kdePackages.kolourpaint
   ];
   imports = [
     ./modules/git.nix
