@@ -8,6 +8,7 @@
       $env.config.buffer_editor = "nvim"
       $env.config.show_banner = false
       $env.EDITOR = "nvim"
+      $env.PATH = ($env.PATH | append "/home/pirson/.bun/bin/")
       source ~/.zoxide.nu
       source ~/.atuin.nu
     '';

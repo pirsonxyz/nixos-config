@@ -32,6 +32,8 @@
     obsidian
     libreoffice
     kdePackages.kolourpaint
+    binsider
+    (uutils-coreutils.override { prefix = ""; })
   ];
   imports = [
     ./modules/git.nix
