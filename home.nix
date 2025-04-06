@@ -33,6 +33,8 @@
     libreoffice
     kdePackages.kolourpaint
     binsider
+    wine
+    deno
     (uutils-coreutils.override { prefix = ""; })
   ];
   imports = [

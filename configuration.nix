@@ -77,6 +77,7 @@
     #media-session.enable = true;
   };
   boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelModules = ["uinput"];
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -85,7 +86,7 @@
   users.users.pirson = {
     isNormalUser = true;
     description = "Pirson Bethancourt";
-    extraGroups = ["networkmanager" "wheel" "input"];
+    extraGroups = ["networkmanager" "wheel" "input" "uinput"];
     shell = pkgs.nushell;
     packages = with pkgs; [
       kdePackages.kate
@@ -106,6 +107,40 @@
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
   };
+  services.kanata = {
+  enable = true;
+  keyboards.laptop = {
+    devices = ["/dev/input/event1"];
+    configFile = pkgs.writeText "kanata.kbd" ''
+      (defcfg
+          process-unmapped-keys yes
+      )
+
+      (defsrc
+          spc  h  j  k  l
+          left down up right
+      )
+
+      (defalias
+          spcl (tap-hold-press 200 200 spc (layer-toggle vim-arrows))
+      )
+
+      (deflayer default
+          @spcl  h  j  k  l
+          left   down up right
+      )
+
+      (deflayer vim-arrows
+          _      left down up right
+          left   down up right
+      )
+    '';
+  };
+};
+  services.udev.extraRules = ''
+    KERNEL=="event*", SUBSYSTEM=="input", GROUP="input", MODE="0660"
+    KERNEL=="uinput", SUBSYSTEM=="misc", GROUP="uinput", MODE="0660"
+  '';
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
