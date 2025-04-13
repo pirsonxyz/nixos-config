@@ -67,7 +67,7 @@ commit.gpgSign  = true;
 
     gpg.format      = "ssh";
     user.signinKey = "~/.ssh/id_ed25519.pub";
-
+    signByDefault = true;
   };
   # Configure keymap in X11
   services.xserver.xkb = {
