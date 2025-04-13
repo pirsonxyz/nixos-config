@@ -13,13 +13,14 @@
       source ~/.atuin.nu
     '';
     shellAliases = {
-      v="nvim";
+      v = "nvim";
       vi = "nvim";
       vim = "nvim";
       cat = "bat --theme gruvbox-dark";
       nano = "hx";
       c = "clear";
       nix-shell = "nix-shell --run nu";
+      server = "ssh server.pirson.xyz -p 42069"; # super secret ip
       home = "nvim ~/.config/nixos";
       rebuild = "home-manager switch --flake /etc/nixos/.";
       rebuild-nix = "sudo nixos-rebuild switch --flake /etc/nixos/.";

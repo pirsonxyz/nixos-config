@@ -50,8 +50,25 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.ly.enable = true;
+  services.displayManager.ly.settings = {
+    animate = true;
+    animation = "doom";
+  };
   services.desktopManager.plasma6.enable = true;
+  programs.steam = {
+  enable = true;
+  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+};
+programs.git.config = {
+commit.gpgSign  = true;
+    tag.gpgSign     = true;
 
+    gpg.format      = "ssh";
+    user.signinKey = "~/.ssh/id_ed25519";
+
+  };
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -101,42 +118,42 @@
   nixpkgs.config.allowUnfree = true;
   services.flatpak .enable = true;
   systemd.services.flatpak-repo = {
-    wantedBy = [ "multi-user.target" ];
-    path = [ pkgs.flatpak ];
+    wantedBy = ["multi-user.target"];
+    path = [pkgs.flatpak];
     script = ''
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
   };
   services.kanata = {
-  enable = true;
-  keyboards.laptop = {
-    devices = ["/dev/input/event1"];
-    configFile = pkgs.writeText "kanata.kbd" ''
-      (defcfg
-          process-unmapped-keys yes
-      )
+    enable = true;
+    keyboards.laptop = {
+      devices = ["/dev/input/event1"];
+      configFile = pkgs.writeText "kanata.kbd" ''
+        (defcfg
+            process-unmapped-keys yes
+        )
 
-      (defsrc
-          spc  h  j  k  l
-          left down up right
-      )
+        (defsrc
+            spc  h  j  k  l
+            left down up right
+        )
 
-      (defalias
-          spcl (tap-hold-press 200 200 spc (layer-toggle vim-arrows))
-      )
+        (defalias
+            spcl (tap-hold-press 200 200 spc (layer-toggle vim-arrows))
+        )
 
-      (deflayer default
-          @spcl  h  j  k  l
-          left   down up right
-      )
+        (deflayer default
+            @spcl  h  j  k  l
+            left   down up right
+        )
 
-      (deflayer vim-arrows
-          _      left down up right
-          left   down up right
-      )
-    '';
+        (deflayer vim-arrows
+            _      left down up right
+            left   down up right
+        )
+      '';
+    };
   };
-};
   services.udev.extraRules = ''
     KERNEL=="event*", SUBSYSTEM=="input", GROUP="input", MODE="0660"
     KERNEL=="uinput", SUBSYSTEM=="misc", GROUP="uinput", MODE="0660"

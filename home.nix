@@ -33,9 +33,8 @@
     libreoffice
     kdePackages.kolourpaint
     binsider
-    wine
     deno
-    (uutils-coreutils.override { prefix = ""; })
+    (uutils-coreutils.override {prefix = "";})
   ];
   imports = [
     ./modules/git.nix
@@ -55,17 +54,17 @@
     starship.enable = true;
     atuin.enable = true;
     bat.enable = true;
-    zoxide.enableNushellIntegration = true; 
+    zoxide.enableNushellIntegration = true;
   };
 
   programs.jujutsu = {
     enable = true;
     settings = {
-        user = {
-            email = "pirson@pirson.xyz";
-            name = "pirsonxyz";
-          };
+      user = {
+        email = "pirson@pirson.xyz";
+        name = "pirsonxyz";
       };
+    };
   };
-
+ 
 }
