@@ -66,6 +66,9 @@
     layout = "us";
     variant = "";
   };
+ programs.ssh = {
+    startAgent = true; 
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

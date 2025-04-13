@@ -5,7 +5,7 @@ programs.git = {
     userEmail = "pirson@pirson.xyz"; 
  signing = {
      
-      key = "/home/pirson/.ssh/id_ed25519.pub";
+      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILj7z/frooN4KqCugg80Y1uZGn4E6bobjQeIs7RMZXDD pirson@pirson.xyz";
       signByDefault = true;
       format = "ssh";
     };
