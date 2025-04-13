@@ -61,14 +61,6 @@
   dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
 };
-programs.git.config = {
-commit.gpgSign  = true;
-    tag.gpgSign     = true;
-
-    gpg.format      = "ssh";
-    user.signinKey = "~/.ssh/id_ed25519.pub";
-    signByDefault = true;
-  };
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
