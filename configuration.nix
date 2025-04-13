@@ -69,6 +69,9 @@
   programs.ssh = {
     startAgent = true;
   };
+  programs.git.config = {
+      gpg.ssh.allowedSignersFile = "~/.config/git/allowed_signers";
+    };
   # donati
   # Enable CUPS to print documents.
   services.printing.enable = true;
