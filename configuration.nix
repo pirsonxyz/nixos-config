@@ -56,18 +56,18 @@
   };
   services.desktopManager.plasma6.enable = true;
   programs.steam = {
-  enable = true;
-  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-};
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
- programs.ssh = {
-    startAgent = true; 
+  programs.ssh = {
+    startAgent = true;
   };
 
   # Enable CUPS to print documents.
