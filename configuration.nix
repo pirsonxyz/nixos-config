@@ -66,7 +66,7 @@ commit.gpgSign  = true;
     tag.gpgSign     = true;
 
     gpg.format      = "ssh";
-    user.signinKey = "~/.ssh/id_ed25519";
+    user.signinKey = "~/.ssh/id_ed25519.pub";
 
   };
   # Configure keymap in X11

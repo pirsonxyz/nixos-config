@@ -37,9 +37,9 @@
     (uutils-coreutils.override {prefix = "";})
   ];
   imports = [
-    ./modules/git.nix
     ./modules/ghostty.nix
     ./modules/nushell.nix
+    ./modules/git.nix
   ];
   programs = {
     carapace.enable = true;
