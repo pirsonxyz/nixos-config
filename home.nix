@@ -51,7 +51,17 @@
         hosts = ["https://github.com"];
       };
     };
-    starship.enable = true;
+    starship = {
+        enable = true;
+        enableNushellIntegration = true;
+        settings = {
+            character = {
+    success_symbol = "[\\$](bold gray)";
+    error_symbol = "[✗](bold red)";
+  };
+          };
+      };
+    
     atuin.enable = true;
     bat.enable = true;
     zoxide.enableNushellIntegration = true;

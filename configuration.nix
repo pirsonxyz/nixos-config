@@ -101,7 +101,7 @@
   users.users.pirson = {
     isNormalUser = true;
     description = "Pirson Bethancourt";
-    extraGroups = ["networkmanager" "wheel" "input" "uinput"];
+    extraGroups = ["networkmanager" "wheel" "input" "uinput" "dialout" "tty"];
     shell = pkgs.nushell;
     packages = with pkgs; [
       kdePackages.kate
@@ -165,6 +165,8 @@
     ghostty
     libgcc
     gcc
+    quickemu
+    spice
   ];
   nix.gc = {
     automatic = true;
