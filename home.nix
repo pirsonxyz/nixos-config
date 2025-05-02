@@ -76,4 +76,7 @@
       };
     };
   };
+  programs.ssh ={
+      addKeysToAgent = "yes";
+    };
 }
