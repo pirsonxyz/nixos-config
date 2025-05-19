@@ -16,7 +16,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -55,6 +55,15 @@
     animation = "doom";
   };
   services.desktopManager.plasma6.enable = true;
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+  
+  environment.sessionVariables = {
+    WLR_NO_HARDWARE_CURSORS = "0";
+    NIXOS_OZONE_WL = "1";
+  };
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -70,8 +79,13 @@
     startAgent = true;
   };
   programs.git.config = {
-      gpg.ssh.allowedSignersFile = "~/.config/git/allowed_signers";
-    };
+    gpg.ssh.allowedSignersFile = "~/.config/git/allowed_signers";
+  };
+  hardware = {
+    opengl.enable = true;
+    logitech.wireless.enable = true;
+    keyboard.qmk.enable = true;
+  };
   # donati
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -79,13 +93,14 @@
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -158,6 +173,9 @@
   '';
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
+  
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wgea
@@ -167,6 +185,31 @@
     gcc
     quickemu
     spice
+    libnotify
+    waybar
+    mint-themes
+    swww
+    networkmanagerapplet
+    hypridle
+    yad
+    sox
+    hyprpicker
+    brightnessctl
+    blueman
+    cliphist
+    swaynotificationcenter
+    lxappearance
+    eww
+    grim
+    slurp
+    hyprlock
+    mako
+    pavucontrol
+    rofi-wayland
+    (waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+    })
+    )
   ];
   nix.gc = {
     automatic = true;
@@ -181,14 +224,15 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+ 
 
   # List services that you want to enable:
   fonts.packages = [
     pkgs.jetbrains-mono
+    pkgs.noto-fonts-emoji-blob-bin
+    pkgs.papirus-icon-theme
+    pkgs.monocraft
+    pkgs.miracode
   ];
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

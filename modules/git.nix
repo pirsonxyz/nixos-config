@@ -1,6 +1,13 @@
 {
   programs.git = {
     enable = true;
+    delta.enable = true;
+    aliases = {
+      cm = "commit -m";
+      a = "add";
+      p = "push";
+      pl = "pull";
+    };
     userName = "pirsonxyz";
     userEmail = "pirson@pirson.xyz";
     signing = {
